@@ -10,24 +10,24 @@ import org.example.tphopital.entity.User;
 
 import java.io.IOException;
 
-
 @WebServlet("/auth")
 public class AuthenticationServlet extends HttpServlet {
 
+    private  User validUser = new User("admin", "password");
 
-    private static final User validUser = new User("admin", "password");
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+            IOException {
+        System.out.println("ok");
         String username = request.getParameter("j_username");
         String password = request.getParameter("j_password");
 
-        // Vérification des informations d'identification
         if (validUser.getUsername().equals(username) && validUser.getPassword().equals(password)) {
-            HttpSession session = request.getSession(true); // Crée une nouvelle session si elle n'existe pas
+            HttpSession session = request.getSession(true);
             session.setAttribute("username", username);
-            response.sendRedirect(request.getContextPath() + "/patient/form?mode=add"); // Redirige vers la page d'ajout de patient
+            session.setAttribute("password", password);
+            response.sendRedirect(request.getContextPath() + "/patient/addForm");
         } else {
-            response.sendRedirect(request.getContextPath() + "/login.jsp?error=true"); // Redirige vers la page de login avec une erreur
+            response.sendRedirect(request.getContextPath() + "/login.jsp?error=true");
         }
     }
 }

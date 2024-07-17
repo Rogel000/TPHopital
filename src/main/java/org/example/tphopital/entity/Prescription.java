@@ -9,8 +9,6 @@ public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Lob
     private String description;
 
     @ManyToOne
