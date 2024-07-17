@@ -60,21 +60,21 @@
             <form action="<%= mode.equals("add") ? "add" : "" %>" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nom:</label>
-                    <input type="text" id="name" name="name" class="form-control" value="<%= patient.getName() %>" <% if (!mode.equals("add")) { %> readonly <% } %>>
+                    <input type="text" id="name" name="name" class="form-control"  <% if (!mode.equals("add") )  { %> value="<%= patient.getName() %>" readonly <% } %>>
                 </div>
                 <div class="mb-3">
                     <label for="tel" class="form-label">Tel:</label>
-                    <input type="text" id="tel" name="tel" class="form-control" value="<%= patient.getTel() %>" <% if (!mode.equals("add")) { %> readonly <% } %>>
+                    <input type="text" id="tel" name="tel" class="form-control"  <% if (!mode.equals("add")) { %> value="<%= patient.getTel() %>" readonly <% } %>>
                 </div>
                 <div class="mb-3">
                     <label for="birthDate" class="form-label">Date de Naissance:</label>
-                    <input type="date" id="birthDate" name="birthDate" class="form-control" value="<%= patient.getBirthDate() %>" <% if (!mode.equals("add")) { %> readonly <% } %>>
+                    <input type="date" id="birthDate" name="birthDate" class="form-control"  <% if (!mode.equals("add")) { %> value="<%= patient.getBirthDate() %>" readonly <% } %>>
                 </div>
                 <% if (!mode.equals("add")) { %>
                 <div class="mb-3">
                     <label for="image" class="form-label">Photo:</label>
                     <br>
-                    <img src="${pageContext.request.contextPath}/image/${patient.image}" class="img-thumbnail" alt="Photo du patient" width="200">
+                    <img src="${pageContext.request.contextPath}/<%= patient.getImage() %>" class="img-thumbnail" alt="Photo du patient" width="200">
                 </div>
                 <% } else { %>
                 <div class="mb-3">

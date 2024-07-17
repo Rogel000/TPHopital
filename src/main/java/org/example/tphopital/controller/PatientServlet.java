@@ -93,16 +93,17 @@ public class PatientServlet extends HttpServlet {
             file.mkdir();
         }
 
-        Part image = request.getPart("image");
-        String fileName = image.getSubmittedFileName();
+        Part imagePart = request.getPart("image");
+        String fileName = imagePart.getSubmittedFileName();
 
-        image.write(uploadPath + File.separator + fileName);
+
+        imagePart.write(uploadPath + File.separator + fileName);
 
         Patient patient = new Patient();
         patient.setName(name);
         patient.setTel(tel);
         patient.setBirthDate(birthDate);
-        patient.setImage(fileName.getBytes());
+        patient.setImage("image/" +fileName);
 
         patientService.createPatient(patient.getName(), patient.getTel(), patient.getBirthDate(), patient.getImage());
         response.sendRedirect(request.getContextPath() + "/patient/list");

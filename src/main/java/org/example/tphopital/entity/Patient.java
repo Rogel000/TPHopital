@@ -21,17 +21,17 @@ public class Patient {
     private  String tel;
     @Temporal(TemporalType.DATE)
     private LocalDate birthDate;
-    private byte[] image;
+    private String image;
 
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointments;
 
 
 
-    public Patient(String name, String tel, LocalDate birthDate, byte[] image) {
+    public Patient(String name, String tel, LocalDate birthDate, String image) {
         this.name = name;
         this.tel = tel;
         this.birthDate = birthDate;
-        this.image = new byte[0];
+        this.image = image;
     }
 }

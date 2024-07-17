@@ -17,7 +17,7 @@ public class PatientService {
 
     public PatientService(SessionFactory sessionFactory) {_sessionFactory = sessionFactory;}
 
-    public boolean createPatient(String name, String tel, LocalDate birthDate, byte[] image) {
+    public boolean createPatient(String name, String tel, LocalDate birthDate, String image) {
         boolean result = false;
         session = _sessionFactory.openSession();
         session.beginTransaction();
